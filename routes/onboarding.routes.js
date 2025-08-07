@@ -31,6 +31,10 @@ router.get("/background-check/pricing", onboardingController.getBackgroundCheckP
 router.post("/company-verification", validate.setupCompanyVerification, onboardingController.setupCompanyVerification);
 router.post("/upload-business-document", upload.single('document'), validate.uploadBusinessDocument, onboardingController.uploadBusinessDocument);
 
+// University Onboarding (New)
+router.get("/university-dashboard", onboardingController.getUniversityDashboard);
+router.post("/upload-university-logo", upload.single('logo'), onboardingController.uploadUniversityLogo);
+router.post("/setup-university-profile", validate.createUniversity ,onboardingController.setupUniversityProfile);
 
 // Complete onboarding
 router.post("/complete", onboardingController.completeOnboarding);

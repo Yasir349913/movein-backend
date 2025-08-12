@@ -464,6 +464,107 @@ const updateUserStatus = validateRequest(
 
 
 
+// Add these payment validations to your existing validate.js file
+
+const paymentValidations = {
+  createOneTimePayment: Joi.object({
+    service_type: Joi.string()
+      .valid(
+        'background_check', 
+        'income_check', 
+        'social_credit_check', 
+        'basic_listing', 
+        'premium_listing', 
+        'listing_boost', 
+        'contract_fee'
+      )
+      .required()
+      .messages({
+        'any.only': 'Invalid service type',
+        'any.required': 'Service type is required'
+      }),
+    gateway: Joi.string()
+      .valid('stripe', 'paypal')
+      .default('stripe')
+      .messages({
+        'any.only': 'Gateway must be either stripe or paypal'
+      })
+  }),
+
+  confirmPayment: Joi.object({
+    transaction_id: Joi.string()
+      .required()
+      .messages({
+        'any.required': 'Transaction ID is required'
+      }),
+    gateway_transaction_id: Joi.string()
+      .required()
+      .messages({
+        'any.required': 'Gateway transaction ID is required'
+      })
+  }),
+
+  createSubscription: Joi.object({
+    subscription_type: Joi.string()
+      .valid(
+        'roommate_weekly',
+        'landlord_monthly', 
+        'agency_unlimited',
+        'university_partnership',
+        'bank_advertisement'
+      )
+      .required()
+      .messages({
+        'any.only': 'Invalid subscription type',
+        'any.required': 'Subscription type is required'
+      }),
+    gateway: Joi.string()
+      .valid('stripe', 'paypal')
+      .default('stripe')
+      .messages({
+        'any.only': 'Gateway must be either stripe or paypal'
+      })
+  }),
+
+  setupPaymentAccount: Joi.object({
+    gateway: Joi.string()
+      .valid('stripe', 'paypal')
+      .default('stripe')
+      .messages({
+        'any.only': 'Gateway must be either stripe or paypal'
+      })
+  }),
+
+  createRentPayment: Joi.object({
+    landlord_id: Joi.string()
+      .required()
+      .messages({
+        'any.required': 'Landlord ID is required'
+      }),
+    property_id: Joi.string()
+      .required()
+      .messages({
+        'any.required': 'Property ID is required'
+      }),
+    amount: Joi.number()
+      .integer()
+      .min(100) // Minimum $1.00
+      .required()
+      .messages({
+        'number.min': 'Amount must be at least $1.00',
+        'any.required': 'Amount is required'
+      }),
+    gateway: Joi.string()
+      .valid('stripe', 'paypal')
+      .default('stripe')
+      .messages({
+        'any.only': 'Gateway must be either stripe or paypal'
+      })
+  })
+};
+
+
+
 // ==========================================
 // EXPORT ALL VALIDATIONS
 // ==========================================
@@ -494,6 +595,8 @@ export const validate = {
   approveDocument,
   rejectDocument,
   updateUserStatus,
-  
 
+  // Payment Validations
+  paymentValidations,
+  
 };

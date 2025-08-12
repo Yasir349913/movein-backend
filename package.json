@@ -23,6 +23,7 @@
     "@aws-sdk/client-s3": "^3.850.0",
     "@aws-sdk/s3-request-presigner": "^3.850.0",
     "@faker-js/faker": "^9.9.0",
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",

@@ -1,6 +1,6 @@
 // config/redis.js - Updated with queue config
 import Redis from "redis";
-import { env } from "./env.js";
+import { env } from "./env.config.js";
 
 export const redis = Redis.createClient({
   url: env.REDIS_URL,

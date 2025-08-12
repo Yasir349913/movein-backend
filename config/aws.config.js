@@ -1,6 +1,6 @@
 // config/aws.js
 import AWS from "aws-sdk";
-import { env } from "./env.js";
+import { env } from "./env.config.js";
 
 AWS.config.update({
   accessKeyId: env.AWS_ACCESS_KEY_ID,
@@ -13,7 +13,7 @@ export const s3 = new AWS.S3();
 export const awsConfig = {
   bucket: env.AWS_S3_BUCKET,
   region: env.AWS_REGION,
-  
+
   folders: {
     characters: "characters/",
     originalImages: "characters/original/",
@@ -24,17 +24,17 @@ export const awsConfig = {
     icons: "icons/",
     previews: "previews/",
   },
-  
+
   upload: {
     maxSize: env.MAX_FILE_SIZE,
     allowedTypes: ["image/jpeg", "image/jpg", "image/png", "image/webp"],
   },
-  
+
   // CDN/CloudFront Settings
   cloudfront: {
     domain: process.env.CLOUDFRONT_DOMAIN || null,
   },
-  
+
   // Signed URL Expiration
   signedUrlExpiry: 60 * 60, // 1 hour
 };

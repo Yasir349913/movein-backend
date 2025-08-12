@@ -7,8 +7,8 @@ import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import cookieParser from "cookie-parser";
 import cookieSession from "cookie-session";
-import { notFoundMiddleware } from "./middlewares/notFound.js";
-import { errorHandler } from "./middlewares/errorHandler.js";
+import { notFoundMiddleware } from "./middlewares/index.js";
+import { errorHandler } from "./middlewares/index.js";
 import routes from "./routes/index.js";
 import { env } from "./config/index.js";
 

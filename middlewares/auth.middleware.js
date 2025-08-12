@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/index.js";
-import { env } from "../config/env.js";
+import { env } from "../config/env.config.js";
 
 export const auth = async (req, res, next) => {
   // ✅ Try getting token from cookies first
@@ -22,7 +22,7 @@ export const auth = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, env.ACCESS_TOKEN_SECRET);
     const user = await User.findById(decoded._id).select("-password");
-  
+
 
     if (!user) throw new ApiError(401, "User not found");
 

@@ -2,7 +2,7 @@ export * as authController from "./auth.controller.js";
 // export * as adminController from "./admin.controller.js";
 // export * as bookController from "./book.controller.js";
 // export * as characterController from "./character.controller.js";
-// export * as paymentController from "./payment.controller.js";
+export * as paymentController from "./payment.controller.js";
 // export * as generationController from "./generation.controller.js";
 // export * as webhookController from "./webhook.controller.js";
 // export * as configController from "./config.controller.js";

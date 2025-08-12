@@ -39,6 +39,14 @@ const universitySchema = new mongoose.Schema(
       type: Number,
       default: 15.00
     },
+    trial_starts_at: {
+      type: Date,
+      default: Date.now
+    },
+    trial_ends_at: {
+      type: Date,
+      default: () => new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 days
+    },
     
     // Simple tracking
     total_students: {

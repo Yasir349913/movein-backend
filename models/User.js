@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { env } from "../config/env.js";
+import { env } from "../config/env.config.js";
 import { USER_TYPES, USER_STATUS, USER_GENDER } from "../utils/enums.js";
 
 const userSchema = new mongoose.Schema(

@@ -245,8 +245,19 @@ class OnboardingService {
 
     await backgroundCheck.save();
 
-    // 2. Process payment (integrate with Stripe)
-    // const paymentResult = await processPayment(userId, amount);
+    // Should integrate with your payment service
+    const paymentResult = await paymentService.createOneTimePayment(
+      userId,
+      checkType, // 'background_check', 'income_check', 'social_credit_check'
+      'stripe'
+    );
+
+    if (!paymentResult.success) {
+      throw new Error(`Payment failed: ${paymentResult.error}`);
+    }
+
+    // Update background check with transaction ID
+    backgroundCheck.transaction_id = paymentResult.transaction_id;
 
     // 3. Submit to Certn API (mock for now)
     const certnOrderId = `CERTN_${Date.now()}_${userId.toString().slice(-6)}`;
@@ -593,7 +604,9 @@ class OnboardingService {
       student_population,
       website_url,
       address,
-      subscription_status: 'trial', // Start with 30-day trial
+      trial_starts_at: new Date(),
+      trial_ends_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+      subscription_status: 'trial',
       monthly_fee: 99.00,
       discount_percentage: 15.00,
       total_students: 0,

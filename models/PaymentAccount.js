@@ -58,8 +58,6 @@ const paymentAccountSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-// Add indexes for better performance
-paymentAccountSchema.index({ user_id: 1 }, { unique: true });
 // Add a compound index for account type and status
 paymentAccountSchema.index({ account_type: 1, account_status: 1 });
 

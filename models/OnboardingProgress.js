@@ -58,7 +58,6 @@ const onboardingProgressSchema = new mongoose.Schema(
 );
 
 // Essential indexes
-onboardingProgressSchema.index({ user_id: 1 });
 onboardingProgressSchema.index({ user_type: 1, is_completed: 1 });
 
 // Essential methods

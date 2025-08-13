@@ -1,32 +1,32 @@
 
 
 const PROPERTY_TYPES = {
-    APARTMENT: 'apartment',
-    HOUSE: 'house',
-    CONDO: 'condo',
-    STUDIO: 'studio',
-    TOWNHOUSE: 'townhouse',
-    BASEMENT: 'basement',
-    ROOM: 'room',
-    SHARED_ROOM: 'shared_room',
-    LOFT: 'loft',
-    DUPLEX: 'duplex',
-    MOBILE_HOME: 'mobile_home',
-    PENTHOUSE: 'penthouse',
-    COTTAGE: 'cottage'
+  APARTMENT: 'apartment',
+  HOUSE: 'house',
+  CONDO: 'condo',
+  STUDIO: 'studio',
+  TOWNHOUSE: 'townhouse',
+  BASEMENT: 'basement',
+  ROOM: 'room',
+  SHARED_ROOM: 'shared_room',
+  LOFT: 'loft',
+  DUPLEX: 'duplex',
+  MOBILE_HOME: 'mobile_home',
+  PENTHOUSE: 'penthouse',
+  COTTAGE: 'cottage'
 };
 
 const PROPERTY_STATUS = {
-    PENDING: 'pending',
-    APPROVED: 'approved',
-    REJECTED: 'rejected',
-    RENTED: 'rented',
-    SOLD: 'sold'
+  PENDING: 'pending',
+  APPROVED: 'approved',
+  REJECTED: 'rejected',
+  RENTED: 'rented',
+  SOLD: 'sold'
 };
 const PLAN_DURATIONS = {
-    ONE_TIME: 'one_time',
-    MONTHLY: 'monthly',
-    YEARLY: 'yearly'
+  ONE_TIME: 'one_time',
+  MONTHLY: 'monthly',
+  YEARLY: 'yearly'
 };
 
 
@@ -191,4 +191,25 @@ export const DOCUMENT_STATUS = {
   PENDING: 'pending',
   APPROVED: 'approved',
   REJECTED: 'rejected'
+};
+
+
+export const CHECK_TYPE = {
+  BACKGROUND: 'background',
+  INCOME_EMPLOYMENT: 'income_employment',
+  SOCIAL_CREDIT: 'social_credit'
+};
+
+
+export const CHECK_STATUS = {
+  PENDING: 'pending',
+  IN_PROGRESS: 'in_progress',
+  COMPLETED: 'completed',
+  FAILED: 'failed'
+};
+
+export const BADGE_TYPE = {
+  BACKGROUND_VERIFIED: 'background_verified',
+  INCOME_VERIFIED: 'income_verified',
+  SOCIAL_CREDIT_VERIFIED: 'social_credit_verified'
 };

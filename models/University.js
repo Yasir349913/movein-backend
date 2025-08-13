@@ -62,7 +62,6 @@ const universitySchema = new mongoose.Schema(
 );
 
 // Essential indexes
-universitySchema.index({ domain: 1 });
 universitySchema.index({ admin_user_id: 1 });
 
 // Essential methods

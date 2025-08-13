@@ -2,56 +2,55 @@
 import { Router } from "express";
 import { paymentController } from "../controllers/index.js";
 import { validate, auth } from "../middlewares/index.js";
-const { paymentValidations } = validate;
 
 const router = Router();
 
-// // ============= PRICING INFORMATION =============
-// // Get service pricing (public route - no auth needed)
-// router.get("/pricing", paymentController.getServicePricing);
+// ============= PRICING INFORMATION =============
+// Get service pricing (public route - no auth needed)
+router.get("/pricing", paymentController.getServicePricing);
 
-// // All payment routes require authentication
-// router.use(auth);
+// All payment routes require authentication
+router.use(auth);
 
-// // ============= ONE-TIME PAYMENTS =============
+// ============= ONE-TIME PAYMENTS =============
 
-// // Create one-time payment (background checks, listing fees, contracts)
-// router.post("/one-time", paymentValidations.createOneTimePayment, paymentController.createOneTimePayment);
+// Create one-time payment (background checks, listing fees, contracts)
+router.post("/one-time", validate.createOneTimePayment, paymentController.createOneTimePayment);
 
-// // Confirm one-time payment
-// router.post("/one-time/confirm", paymentValidations.confirmPayment, paymentController.confirmOneTimePayment);
+// Confirm one-time payment
+router.post("/one-time/confirm", validate.confirmOneTimePayment, paymentController.confirmOneTimePayment);
 
-// // ============= SUBSCRIPTIONS =============
+// ============= SUBSCRIPTIONS =============
 
-// // Create subscription (roommate, agency, university, bank)
-// router.post("/subscription", paymentValidations.createSubscription, paymentController.createSubscription);
+// Create subscription (roommate, agency, university, bank)
+router.post("/subscription", validate.createSubscription, paymentController.createSubscription);
 
-// // Cancel subscription
-// router.patch("/subscription/:subscription_id/cancel" ,paymentController.cancelSubscription);
+// Cancel subscription
+router.patch("/subscription/:subscription_id/cancel", paymentController.cancelSubscription);
 
-// // Get subscription status
-// router.get("/subscription/:subscription_id", paymentController.getSubscriptionStatus);
+// Get subscription status
+router.get("/subscription/:subscription_id", paymentController.getSubscriptionStatus);
 
-// // ============= PAYMENT ACCOUNT SETUP =============
+// ============= PAYMENT ACCOUNT SETUP =============
 
-// // Setup payment account (for landlords)
-// router.post("/account/setup", paymentValidations.setupPaymentAccount, paymentController.setupPaymentAccount);
+// Setup payment account (for landlords)
+router.post("/account/setup", validate.setupPaymentAccount, paymentController.setupPaymentAccount);
 
-// // Get payment account status
-// router.get("/account/status", paymentController.getPaymentAccountStatus);
+// Get payment account status
+router.get("/account/status", paymentController.getPaymentAccountStatus);
 
-// // ============= RENT PAYMENTS =============
+// ============= RENT PAYMENTS =============
 
-// // Create rent payment (tenant to landlord)
-// router.post("/rent", validate.createRentPayment, paymentController.createRentPayment);
+// Create rent payment (tenant to landlord)
+router.post("/rent", validate.createRentPayment, paymentController.createRentPayment);
 
-// // ============= TRANSACTION HISTORY =============
+// ============= TRANSACTION HISTORY =============
 
-// // Get transaction history
-// router.get("/transactions", paymentController.getTransactionHistory);
+// Get transaction history
+router.get("/transactions", paymentController.getTransactionHistory);
 
-// // Get specific transaction
-// router.get("/transactions/:transaction_id", paymentController.getTransaction);
+// Get specific transaction
+router.get("/transactions/:transaction_id", paymentController.getTransaction);
 
 
 

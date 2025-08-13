@@ -290,8 +290,8 @@ const setupCompanyVerification = validateRequest(
       }),
     business_type: Joi.string()
       .valid(
-        'property_management', 
-        'real_estate_agency', 
+        'property_management',
+        'real_estate_agency',
         'investment_company',
         'bank',
         'mortgage_lender',
@@ -334,7 +334,7 @@ const uploadBusinessDocument = (req, res, next) => {
     document_type: Joi.string()
       .valid(
         'business_license',
-        'tax_document', 
+        'tax_document',
         'incorporation_document',
         'insurance_document',
         'banking_information',
@@ -464,18 +464,16 @@ const updateUserStatus = validateRequest(
 
 
 
-// Add these payment validations to your existing validate.js file
-
-const paymentValidations = {
-  createOneTimePayment: Joi.object({
+const createOneTimePayment = validateRequest(
+  Joi.object({
     service_type: Joi.string()
       .valid(
-        'background_check', 
-        'income_check', 
-        'social_credit_check', 
-        'basic_listing', 
-        'premium_listing', 
-        'listing_boost', 
+        'background_check',
+        'income_check',
+        'social_credit_check',
+        'basic_listing',
+        'premium_listing',
+        'listing_boost',
         'contract_fee'
       )
       .required()
@@ -489,9 +487,10 @@ const paymentValidations = {
       .messages({
         'any.only': 'Gateway must be either stripe or paypal'
       })
-  }),
-
-  confirmPayment: Joi.object({
+  })
+);
+const confirmOneTimePayment = validateRequest(
+  Joi.object({
     transaction_id: Joi.string()
       .required()
       .messages({
@@ -502,13 +501,15 @@ const paymentValidations = {
       .messages({
         'any.required': 'Gateway transaction ID is required'
       })
-  }),
+  })
+);
 
-  createSubscription: Joi.object({
+const createSubscription = validateRequest(
+  Joi.object({
     subscription_type: Joi.string()
       .valid(
         'roommate_weekly',
-        'landlord_monthly', 
+        'landlord_monthly',
         'agency_unlimited',
         'university_partnership',
         'bank_advertisement'
@@ -524,18 +525,23 @@ const paymentValidations = {
       .messages({
         'any.only': 'Gateway must be either stripe or paypal'
       })
-  }),
+  })
+);
 
-  setupPaymentAccount: Joi.object({
+
+const setupPaymentAccount = validateRequest(
+  Joi.object({
     gateway: Joi.string()
       .valid('stripe', 'paypal')
       .default('stripe')
       .messages({
         'any.only': 'Gateway must be either stripe or paypal'
       })
-  }),
+  })
+);
 
-  createRentPayment: Joi.object({
+const createRentPayment = validateRequest(
+  Joi.object({
     landlord_id: Joi.string()
       .required()
       .messages({
@@ -561,7 +567,7 @@ const paymentValidations = {
         'any.only': 'Gateway must be either stripe or paypal'
       })
   })
-};
+);
 
 
 
@@ -576,7 +582,7 @@ export const validate = {
   resendVerification,
   forgotPassword,
   resetPassword,
-  
+
   // Onboarding (New)
   setupBasicProfile,
   verifyUniversityStudent,
@@ -587,16 +593,20 @@ export const validate = {
   // Company Verification (New)
   setupCompanyVerification,
   uploadBusinessDocument,
-  
+
   // University (New)
   createUniversity,
-  
+
   // Admin (New)
   approveDocument,
   rejectDocument,
   updateUserStatus,
 
-  // Payment Validations
-  paymentValidations,
-  
+  // Payment (New)
+  createOneTimePayment,
+  confirmOneTimePayment,
+  createSubscription,
+  setupPaymentAccount,
+  createRentPayment
+
 };

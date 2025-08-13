@@ -10,7 +10,6 @@ const paymentPlanSchema = new mongoose.Schema(
     plan_id: {
       type: String,
       required: true,
-      unique: true
     },
     
     plan_name: {

@@ -64,8 +64,6 @@ const webhookEventSchema = new mongoose.Schema(
 );
 
 // Add indexes for performance
-webhookEventSchema.index({ webhook_id: 1 }, { unique: true });
-webhookEventSchema.index({ event_type: 1, gateway: 1 });
 webhookEventSchema.index({ processed: 1, processed_at: 1 });
 webhookEventSchema.index({ related_transaction_id: 1 });
 webhookEventSchema.index({ related_subscription_id: 1 });

@@ -12,8 +12,6 @@ const startServer = async () => {
     // Start server
     const server = app.listen(env.PORT, () => {
       console.log(`Server running at http://localhost:${env.PORT}`);
-      console.log(`Docs UI http://localhost:${env.PORT}/docs`);
-      console.log(`OpenAPI JSON http://localhost:${env.PORT}/api-spec/v3`);
       console.log(`Environment: ${env.NODE_ENV}`);
     });
 

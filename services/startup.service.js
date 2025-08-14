@@ -15,8 +15,8 @@ export class StartupService {
     console.log("Initializing Moveinn services...");
 
     await this.initializeDatabase();
-    await this.initializeRedis();
-    await this.initializeQueues();
+    // await this.initializeRedis();
+    // await this.initializeQueues();
 
     if (env.NODE_ENV !== "production") {
       this.initializeDashboard(app);

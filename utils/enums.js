@@ -1,49 +1,4 @@
 
-
-const PROPERTY_TYPES = {
-  APARTMENT: 'apartment',
-  HOUSE: 'house',
-  CONDO: 'condo',
-  STUDIO: 'studio',
-  TOWNHOUSE: 'townhouse',
-  BASEMENT: 'basement',
-  ROOM: 'room',
-  SHARED_ROOM: 'shared_room',
-  LOFT: 'loft',
-  DUPLEX: 'duplex',
-  MOBILE_HOME: 'mobile_home',
-  PENTHOUSE: 'penthouse',
-  COTTAGE: 'cottage'
-};
-
-const PROPERTY_STATUS = {
-  PENDING: 'pending',
-  APPROVED: 'approved',
-  REJECTED: 'rejected',
-  RENTED: 'rented',
-  SOLD: 'sold'
-};
-const PLAN_DURATIONS = {
-  ONE_TIME: 'one_time',
-  MONTHLY: 'monthly',
-  YEARLY: 'yearly'
-};
-
-
-
-
-
-// export {
-//     USER_ROLES,
-//     USER_STATUS,
-//     PROPERTY_TYPES,
-//     PROPERTY_STATUS,
-//     PLAN_DURATIONS,
-//     SUBSCRIPTION_STATUS,
-//     TRANSACTION_TYPES
-// };
-
-
 export const WEBHOOK_EVENT_TYPES = {
   PAYMENT_INTENT_SUCCEEDED: 'payment_intent.succeeded',
   PAYMENT_INTENT_FAILED: 'payment_intent.failed',
@@ -76,11 +31,15 @@ export const WEBHOOK_GATEWAYS = {
 
 export const PAYOUT_STATUS = {
   PENDING: 'pending',
+  PROCESSING: 'processing',
   IN_TRANSIT: 'in_transit',
-  PAID: 'paid',
+  COMPLETED: 'completed',
   FAILED: 'failed',
-  CANCELED: 'canceled'
+  CANCELED: 'canceled',
+  PAID: 'paid',
+
 };
+
 
 
 

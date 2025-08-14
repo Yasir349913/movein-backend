@@ -1,0 +1,696 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/webhook/stripe": {
+      "post": {
+        "summary": "/webhook/stripe",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "webhook"
+        ]
+      }
+    },
+    "/webhook/paypal": {
+      "post": {
+        "summary": "/webhook/paypal",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "webhook"
+        ]
+      }
+    },
+    "/webhook/retry-failed": {
+      "post": {
+        "summary": "/webhook/retry-failed",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "webhook"
+        ]
+      }
+    },
+    "/api/v1/auth/register": {
+      "post": {
+        "summary": "/api/v1/auth/register",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "/api/v1/auth/login",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "summary": "/api/v1/auth/logout",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/refresh-token": {
+      "post": {
+        "summary": "/api/v1/auth/refresh-token",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/verify-email/{token}": {
+      "get": {
+        "summary": "/api/v1/auth/verify-email/{token}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/resend-verification": {
+      "post": {
+        "summary": "/api/v1/auth/resend-verification",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/forgot-password": {
+      "post": {
+        "summary": "/api/v1/auth/forgot-password",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/reset-password": {
+      "post": {
+        "summary": "/api/v1/auth/reset-password",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/profile": {
+      "get": {
+        "summary": "/api/v1/auth/profile",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/onboarding/progress": {
+      "get": {
+        "summary": "/api/v1/onboarding/progress",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 401
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Invalid or expired token"
+                },
+                "data": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "onboarding"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/v1/onboarding/profile-setup": {
+      "post": {
+        "summary": "/api/v1/onboarding/profile-setup",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/upload-profile-image": {
+      "post": {
+        "summary": "/api/v1/onboarding/upload-profile-image",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/university-verification": {
+      "post": {
+        "summary": "/api/v1/onboarding/university-verification",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/upload-document": {
+      "post": {
+        "summary": "/api/v1/onboarding/upload-document",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/background-check": {
+      "post": {
+        "summary": "/api/v1/onboarding/background-check",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/background-check/pricing": {
+      "get": {
+        "summary": "/api/v1/onboarding/background-check/pricing",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/company-verification": {
+      "post": {
+        "summary": "/api/v1/onboarding/company-verification",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/upload-business-document": {
+      "post": {
+        "summary": "/api/v1/onboarding/upload-business-document",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/university-dashboard": {
+      "get": {
+        "summary": "/api/v1/onboarding/university-dashboard",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/upload-university-logo": {
+      "post": {
+        "summary": "/api/v1/onboarding/upload-university-logo",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/setup-university-profile": {
+      "post": {
+        "summary": "/api/v1/onboarding/setup-university-profile",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/complete": {
+      "post": {
+        "summary": "/api/v1/onboarding/complete",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/skip-step": {
+      "post": {
+        "summary": "/api/v1/onboarding/skip-step",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/onboarding/retry-step": {
+      "post": {
+        "summary": "/api/v1/onboarding/retry-step",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v1/payment/pricing": {
+      "get": {
+        "summary": "/api/v1/payment/pricing",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/one-time": {
+      "post": {
+        "summary": "/api/v1/payment/one-time",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/one-time/confirm": {
+      "post": {
+        "summary": "/api/v1/payment/one-time/confirm",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/subscription": {
+      "post": {
+        "summary": "/api/v1/payment/subscription",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/subscription/{subscription_id}/cancel": {
+      "patch": {
+        "summary": "/api/v1/payment/subscription/{subscription_id}/cancel",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/subscription/{subscription_id}": {
+      "get": {
+        "summary": "/api/v1/payment/subscription/{subscription_id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/account/setup": {
+      "post": {
+        "summary": "/api/v1/payment/account/setup",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/account/status": {
+      "get": {
+        "summary": "/api/v1/payment/account/status",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/rent": {
+      "post": {
+        "summary": "/api/v1/payment/rent",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/transactions": {
+      "get": {
+        "summary": "/api/v1/payment/transactions",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payment/transactions/{transaction_id}": {
+      "get": {
+        "summary": "/api/v1/payment/transactions/{transaction_id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "transaction_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/api/v1/payout/summary": {
+      "get": {
+        "summary": "/api/v1/payout/summary",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payout"
+        ]
+      }
+    },
+    "/api/v1/payout/history": {
+      "get": {
+        "summary": "/api/v1/payout/history",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payout"
+        ]
+      }
+    },
+    "/api/v1/payout/process-pending": {
+      "post": {
+        "summary": "/api/v1/payout/process-pending",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payout"
+        ]
+      }
+    },
+    "/api/v1/payout/retry-failed": {
+      "post": {
+        "summary": "/api/v1/payout/retry-failed",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "payout"
+        ]
+      }
+    },
+    "/api/v1/webhook/stripe": {
+      "post": {
+        "summary": "/api/v1/webhook/stripe",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "webhook"
+        ]
+      }
+    },
+    "/api/v1/webhook/paypal": {
+      "post": {
+        "summary": "/api/v1/webhook/paypal",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "webhook"
+        ]
+      }
+    },
+    "/api/v1/webhook/retry-failed": {
+      "post": {
+        "summary": "/api/v1/webhook/retry-failed",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "webhook"
+        ]
+      }
+    },
+    "/api/v1": {
+      "get": {
+        "summary": "/api/v1",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "onboarding"
+    },
+    {
+      "name": "payment"
+    },
+    {
+      "name": "payout"
+    },
+    {
+      "name": "webhook"
+    }
+  ],
+  "definitions": {},
+  "info": {
+    "title": "Moveinn API",
+    "version": "1.0.0",
+    "description": "Moveinn rental platform"
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

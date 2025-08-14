@@ -4,6 +4,7 @@ export * as authController from "./auth.controller.js";
 // export * as characterController from "./character.controller.js";
 export * as paymentController from "./payment.controller.js";
 // export * as generationController from "./generation.controller.js";
-// export * as webhookController from "./webhook.controller.js";
+export * as webhookController from "./webhook.controller.js";
 // export * as configController from "./config.controller.js";
 export * as onboardingController from "./onboarding.controller.js";
+export * as payoutController from "./payout.controller.js";

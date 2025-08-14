@@ -3,7 +3,7 @@
 import { env } from './env.config.js';
 export { env } from "./env.config.js";
 export { openai, openaiConfig, getModelForAge } from "./openai.config.js";
-export { s3, awsConfig, generateS3Key, getPublicUrl } from "./aws.config.js";
+export { s3, presignGet, presignPut, publicUrl, REGION, BUCKET } from "./aws.config.js";
 export { redis, redisConfig } from "./redis.config.js";
 export { transporter, emailConfig } from "./email.config.js";
 export { connectDB } from "./db.config.js";

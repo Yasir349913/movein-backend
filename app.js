@@ -1,3 +1,4 @@
+// app.js
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -7,82 +8,82 @@ import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import cookieParser from "cookie-parser";
 import cookieSession from "cookie-session";
-import { notFoundMiddleware } from "./middlewares/index.js";
-import { errorHandler } from "./middlewares/index.js";
+
+import { notFoundMiddleware, errorHandler } from "./middlewares/index.js";
 import routes from "./routes/index.js";
 import { env } from "./config/index.js";
+import { initApiDocs } from "./docs/init-oas.js";
+import webhookRoutes from "./routes/webhook.routes.js";
 
 const app = express();
 
-// CORS – allow specific origins with credentials
-app.use(cors({
-  origin: [env.CLIENT_URL, "http://localhost:3000", "http://localhost:3001"],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-}));
+// --- Docs (mount first) ---
+initApiDocs(app);
+// Optional friendly path
 
-// Helmet – secure HTTP headers
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'"],
-      imgSrc: ["'self'", "data:", "https:"],
+// --- Security / platform middlewares ---
+const allowedOrigins = [env.CLIENT_URL, "http://localhost:3000", "http://localhost:3001"].filter(Boolean);
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    // No need to allow "Cookie" header; browsers don't send it via CORS request headers
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  })
+);
+
+// Swagger UI serves inline scripts; add 'unsafe-inline' to scriptSrc or use a nonce
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"], // <-- add this for the docs UI to render
+        imgSrc: ["'self'", "data:", "https:"],
+      },
     },
-  },
-}));
+  })
+);
 
-// Sanitize user input (XSS & NoSQL Injection)
 app.use(xssClean());
 app.use(mongoSanitize());
 
-// Cookie Parser (for reading cookies if needed)
 app.use(cookieParser());
-
-// Cookie Session – used if storing JWT/token in cookies
 app.use(
   cookieSession({
     name: "session",
     secret: env.COOKIE_SECRET || "topsecret",
     httpOnly: true,
     secure: env.NODE_ENV === "production",
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   })
 );
 
-// Stripe Webhook Endpoint (must be before JSON parser)
-app.use("/webhook/stripe", express.raw({ type: "application/json" }));
+// --- Stripe webhooks BEFORE body parsers ---
+app.use("/webhook", webhookRoutes); // ensure router uses express.raw() on the specific Stripe route
 
-// Body Parser – parse JSON and URL-encoded data
-app.use(express.json({ limit: "50mb" })); // For large image uploads
+// Body parsers
+app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// Morgan Logger – dev only
-if (env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
+if (env.NODE_ENV === "development") app.use(morgan("dev"));
+if (env.NODE_ENV === "production") app.set("trust proxy", 1);
 
-// Trust reverse proxy (for secure cookies & IP)
-if (env.NODE_ENV === "production") {
-  app.set("trust proxy", 1); // e.g. Heroku / Railway / Vercel
-}
-
+// Rate limiting (ensure numbers)
 const limiter = rateLimit({
-  windowMs: env.RATE_LIMIT_WINDOW || 15 * 60 * 1000, // 15 minutes
-  max: env.RATE_LIMIT_MAX_REQUESTS || 100,
+  windowMs: Number(env.RATE_LIMIT_WINDOW_MS ?? 15 * 60 * 1000),
+  max: Number(env.RATE_LIMIT_MAX_REQUESTS ?? 100),
   message: "Too many requests from this IP, please try again later.",
 });
 app.use("/api", limiter);
 
-// API Routes
+// --- API routes ---
 app.use("/api/v1", routes);
 
-// 404 Not Found Handler
+// 404 + error handler (must be last)
 app.use(notFoundMiddleware);
-
-// Central Error Handler
 app.use(errorHandler);
 
 export default app;

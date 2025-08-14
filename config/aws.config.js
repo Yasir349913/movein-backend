@@ -1,55 +1,24 @@
 // config/aws.js
-import AWS from "aws-sdk";
+import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { env } from "./env.config.js";
 
-AWS.config.update({
-  accessKeyId: env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-  region: env.AWS_REGION,
-});
+export const REGION = env.AWS_REGION;
+export const BUCKET = env.AWS_S3_BUCKET;
 
-export const s3 = new AWS.S3();
+export const s3 = new S3Client({ region: REGION }); // relies on env/role creds
 
-export const awsConfig = {
-  bucket: env.AWS_S3_BUCKET,
-  region: env.AWS_REGION,
+export async function presignPut({ key, contentType, expiresIn = 3600 }) {
+  const cmd = new PutObjectCommand({ Bucket: BUCKET, Key: key, ContentType: contentType });
+  return getSignedUrl(s3, cmd, { expiresIn });
+}
 
-  folders: {
-    characters: "characters/",
-    originalImages: "characters/original/",
-    processedImages: "characters/processed/",
-    generatedImages: "generated-images/",
-    pdfs: "generated-pdfs/",
-    temp: "temp/",
-    icons: "icons/",
-    previews: "previews/",
-  },
+export async function presignGet({ key, expiresIn = 3600 }) {
+  const cmd = new GetObjectCommand({ Bucket: BUCKET, Key: key });
+  return getSignedUrl(s3, cmd, { expiresIn });
+}
 
-  upload: {
-    maxSize: env.MAX_FILE_SIZE,
-    allowedTypes: ["image/jpeg", "image/jpg", "image/png", "image/webp"],
-  },
-
-  // CDN/CloudFront Settings
-  cloudfront: {
-    domain: process.env.CLOUDFRONT_DOMAIN || null,
-  },
-
-  // Signed URL Expiration
-  signedUrlExpiry: 60 * 60, // 1 hour
-};
-
-// Helper function to generate S3 key
-export const generateS3Key = (folder, filename, userId = null) => {
-  const timestamp = Date.now();
-  const userPath = userId ? `${userId}/` : "";
-  return `${awsConfig.folders[folder]}${userPath}${timestamp}_${filename}`;
-};
-
-// Helper function to get public URL
-export const getPublicUrl = (key) => {
-  // if (awsConfig.cloudfront.domain) {
-  //   return `https://${awsConfig.cloudfront.domain}/${key}`;
-  // }
-  return `https://${awsConfig.bucket}.s3.${awsConfig.region}.amazonaws.com/${key}`;
-};
+// Optional helper if you keep objects public or use them behind CloudFront:
+export function publicUrl(key) {
+  return `https://${BUCKET}.s3.${REGION}.amazonaws.com/${encodeURIComponent(key).replace(/%2F/g, "/")}`;
+}

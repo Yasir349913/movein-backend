@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import { WEBHOOK_EVENT_TYPES, WEBHOOK_GATEWAYS } from "../utils/enums.js";
 
 
-
 // Define the WebhookEvent schema
 const webhookEventSchema = new mongoose.Schema(
   {
@@ -12,53 +11,47 @@ const webhookEventSchema = new mongoose.Schema(
       required: true,
       unique: true
     },
-    
+
     event_type: {
       type: String,
       enum: Object.values(WEBHOOK_EVENT_TYPES),
       required: true
     },
-    
+
     gateway: {
       type: String,
       enum: Object.values(WEBHOOK_GATEWAYS),
       required: true
     },
-    
+
     event_data: {
       type: mongoose.Schema.Types.Mixed,
       required: true // Complete webhook payload
     },
-    
     processed: {
       type: Boolean,
       default: false
     },
-    
     processed_at: Date,
-    
     processing_attempts: {
       type: Number,
       default: 0
     },
-    
     related_transaction_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Transaction'
     },
-    
     related_subscription_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Subscription'
     },
-    
     related_user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },
-    
-    processing_error: String
-    
+    processing_error: String,
+    retry_after: Date
+
   },
   { timestamps: true }
 );

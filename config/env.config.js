@@ -212,6 +212,7 @@ export const env = {
   // ==========================================
   DB_BACKUP_FREQUENCY: process.env.DB_BACKUP_FREQUENCY || "daily",
   DB_BACKUP_RETENTION_DAYS: parseInt(process.env.DB_BACKUP_RETENTION_DAYS) || 30,
+  SEED_CLEAR: process.env.SEED_CLEAR === "true",
   MAINTENANCE_MODE: process.env.MAINTENANCE_MODE === "true",
   MAINTENANCE_MESSAGE: process.env.MAINTENANCE_MESSAGE || "We're currently performing maintenance. Please try again later.",
 

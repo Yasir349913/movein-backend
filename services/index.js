@@ -5,3 +5,6 @@ export { onboardingService } from "./onboarding.service.js";
 export { paymentService } from "./payment.service.js";
 export { stripeService } from "./stripe.service.js";
 export { paypalService } from "./paypal.service.js";
+export { webhookService } from "./webhook.service.js";
+export { payoutService } from "./payout.service.js";
+export { startupService } from "./startup.service.js";

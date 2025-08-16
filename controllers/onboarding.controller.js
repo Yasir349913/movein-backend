@@ -1,4 +1,4 @@
-import { onboardingService, paymentService } from "../services/index.js";
+import { onboardingService, storageService} from "../services/index.js";
 import { logger, ApiResponse, ApiError } from "../utils/index.js";
 
 /**

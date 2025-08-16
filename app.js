@@ -14,12 +14,17 @@ import routes from "./routes/index.js";
 import { env } from "./config/index.js";
 import { initApiDocs } from "./docs/init-oas.js";
 import webhookRoutes from "./routes/webhook.routes.js";
+import swaggerUi from "swagger-ui-express";
+import spec from "./docs/openapi.json" with { type: "json" };
+
 
 const app = express();
-
 // --- Docs (mount first) ---
 initApiDocs(app);
 // Optional friendly path
+
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(spec));
 
 // --- Security / platform middlewares ---
 const allowedOrigins = [env.CLIENT_URL, "http://localhost:3000", "http://localhost:3001"].filter(Boolean);

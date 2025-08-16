@@ -170,37 +170,9 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "statusCode": {
-                  "type": "number",
-                  "example": 401
-                },
-                "success": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Invalid or expired token"
-                },
-                "data": {
-                  "type": "null",
-                  "example": null
-                }
-              }
-            }
-          }
-        },
+        "responses": {},
         "tags": [
           "onboarding"
-        ],
-        "produces": [
-          "application/json"
         ]
       }
     },
@@ -263,9 +235,37 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 400
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "paymentService is not defined"
+                },
+                "data": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "onboarding"
+        ],
+        "produces": [
+          "application/json"
         ]
       }
     },

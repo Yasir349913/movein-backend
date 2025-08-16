@@ -19,7 +19,7 @@ export class StartupService {
     // await this.initializeQueues();
 
     if (env.NODE_ENV !== "production") {
-      this.initializeDashboard(app);
+      // this.initializeDashboard(app);
     }
 
     console.log("All services initialized successfully");
@@ -30,32 +30,32 @@ export class StartupService {
     await connectDB();
   }
 
-  static async initializeRedis() {
-    console.log("Connecting to Redis...");
-    // node-redis v4 exposes isOpen; only connect if not already open
-    if (!redis?.isOpen) {
-      await redis.connect();
-    }
-  }
+  // static async initializeRedis() {
+  //   console.log("Connecting to Redis...");
+  //   // node-redis v4 exposes isOpen; only connect if not already open
+  //   if (!redis?.isOpen) {
+  //     await redis.connect();
+  //   }
+  // }
 
-  static async initializeQueues() {
-    console.log("Initializing payment queues...");
-    // If payoutQueue.init exists, call it; otherwise rely on on-import init
-    if (typeof payoutQueue?.init === "function") {
-      await payoutQueue.init();
-    }
-    if (typeof payoutQueue?.getQueueStats === "function") {
-      const stats = await payoutQueue.getQueueStats();
-      console.log("Payment queues initialized", stats);
-    } else {
-      console.log("Payment queues initialized");
-    }
-  }
+  // static async initializeQueues() {
+  //   console.log("Initializing payment queues...");
+  //   // If payoutQueue.init exists, call it; otherwise rely on on-import init
+  //   if (typeof payoutQueue?.init === "function") {
+  //     await payoutQueue.init();
+  //   }
+  //   if (typeof payoutQueue?.getQueueStats === "function") {
+  //     const stats = await payoutQueue.getQueueStats();
+  //     console.log("Payment queues initialized", stats);
+  //   } else {
+  //     console.log("Payment queues initialized");
+  //   }
+  // }
 
-  static initializeDashboard(app) {
-    setupQueueDashboard(app);
-    console.log("Queue dashboard enabled");
-  }
+  // static initializeDashboard(app) {
+  //   setupQueueDashboard(app);
+  //   console.log("Queue dashboard enabled");
+  // }
 
   static async shutdown() {
     if (this.#shuttingDown) return this.#shutdownPromise; // idempotent

@@ -241,9 +241,10 @@ export const setupUniversityProfile = async (req, res) => {
     established_year,
     student_population,
     website_url,
-    address
+    address,
+    discount_percentage,
+    monthly_fee,
   } = req.body;
-  
   logger.info("University profile setup attempt", { userId, name, domain });
   
   try {
@@ -257,7 +258,9 @@ export const setupUniversityProfile = async (req, res) => {
       established_year,
       student_population,
       website_url,
-      address
+      address,
+      discount_percentage,
+    monthly_fee,
     });
     
     logger.info("University profile setup completed", { 

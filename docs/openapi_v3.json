@@ -47,9 +47,80 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 201
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Registration successful. Please check your email for verification."
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "68af5e86904e8fa70ed1c9ec"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "yasir maqsood"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "yasirmaqsood534@gmail.com"
+                        },
+                        "user_type": {
+                          "type": "string",
+                          "example": "university_admin"
+                        },
+                        "isEmailVerified": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    },
+                    "onboarding": {
+                      "type": "object",
+                      "properties": {
+                        "next_step": {
+                          "type": "string",
+                          "example": "email_verification"
+                        },
+                        "completion_percentage": {
+                          "type": "number",
+                          "example": 0
+                        },
+                        "requires_onboarding": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "auth"
+        ],
+        "produces": [
+          "application/json"
         ]
       }
     },
@@ -60,9 +131,71 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Login successful"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "68af40ffb63cb2c3014d519a"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Yasir Maqsood"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "yasirmaqsood534@gmail.com"
+                        },
+                        "isEmailVerified": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "university_admin"
+                        }
+                      }
+                    },
+                    "accessToken": {
+                      "type": "string",
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGFmNDBmZmI2M2NiMmMzMDE0ZDUxOWEiLCJlbWFpbCI6Inlhc2lybWFxc29vZDUzNEBnbWFpbC5jb20iLCJuYW1lIjoiWWFzaXIgTWFxc29vZCIsInVzZXJfdHlwZSI6InVuaXZlcnNpdHlfYWRtaW4iLCJyb2xlIjoidW5pdmVyc2l0eV9hZG1pbiIsImlhdCI6MTc1NjMyMDA1OSwiZXhwIjoxNzU2MzIwOTU5fQ.n_rhy-BqJOz1BZ5QwI4Lvyzkzg_D8GN5Lnw7wniWHvw"
+                    },
+                    "refreshToken": {
+                      "type": "string",
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGFmNDBmZmI2M2NiMmMzMDE0ZDUxOWEiLCJpYXQiOjE3NTYzMjAwNTksImV4cCI6MTc1NjkyNDg1OX0.VRkRXwYWe3oLIeZZVvLJ8BVrMvtZBDX_z3d8TFoBfok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "auth"
+        ],
+        "produces": [
+          "application/json"
         ]
       }
     },
@@ -170,80 +303,115 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
-        "tags": [
-          "onboarding"
-        ]
-      }
-    },
-    "/api/v1/onboarding/profile-setup": {
-      "post": {
-        "summary": "/api/v1/onboarding/profile-setup",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {},
-        "tags": [
-          "onboarding"
-        ]
-      }
-    },
-    "/api/v1/onboarding/upload-profile-image": {
-      "post": {
-        "summary": "/api/v1/onboarding/upload-profile-image",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {},
-        "tags": [
-          "onboarding"
-        ]
-      }
-    },
-    "/api/v1/onboarding/university-verification": {
-      "post": {
-        "summary": "/api/v1/onboarding/university-verification",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {},
-        "tags": [
-          "onboarding"
-        ]
-      }
-    },
-    "/api/v1/onboarding/upload-document": {
-      "post": {
-        "summary": "/api/v1/onboarding/upload-document",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {},
-        "tags": [
-          "onboarding"
-        ]
-      }
-    },
-    "/api/v1/onboarding/background-check": {
-      "post": {
-        "summary": "/api/v1/onboarding/background-check",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [],
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "200": {
+            "description": "OK",
             "schema": {
               "type": "object",
               "properties": {
                 "statusCode": {
                   "type": "number",
-                  "example": 400
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Progress retrieved successfully"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "current_step": {
+                      "type": "string",
+                      "example": "email_verification"
+                    },
+                    "completion_percentage": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "steps_completed": {
+                      "type": "array",
+                      "items": {},
+                      "example": [
+                        null
+                      ]
+                    },
+                    "steps_required": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "email_verification"
+                      ]
+                    },
+                    "is_completed": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "next_actions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "action": "verify_email",
+                          "title": "Verify Your Email",
+                          "description": "Check your email and click the verification link"
+                        }
+                      ]
+                    },
+                    "context": {
+                      "type": "object",
+                      "properties": {
+                        "background_checks": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number",
+                              "example": 0
+                            },
+                            "completed": {
+                              "type": "number",
+                              "example": 0
+                            },
+                            "badges_earned": {
+                              "type": "number",
+                              "example": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {},
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 401
                 },
                 "success": {
                   "type": "boolean",
@@ -251,7 +419,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "paymentService is not defined"
+                  "example": "Invalid or expired token"
                 },
                 "data": {
                   "type": "null",
@@ -269,6 +437,535 @@
         ]
       }
     },
+    "/api/v1/onboarding/profile-setup": {
+      "post": {
+        "summary": "/api/v1/onboarding/profile-setup",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Profile updated successfully"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "68af40ffb63cb2c3014d519a"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Yasir Maqsood"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "yasirmaqsood534@gmail.com"
+                        },
+                        "date_of_birth": {
+                          "type": "string",
+                          "example": "2000-05-10T00:00:00.000Z"
+                        },
+                        "gender": {
+                          "type": "string",
+                          "example": "male"
+                        },
+                        "occupation": {
+                          "type": "string",
+                          "example": "Self-employed"
+                        }
+                      }
+                    },
+                    "onboarding": {
+                      "type": "object",
+                      "properties": {
+                        "next_step": {
+                          "type": "string",
+                          "example": "completed"
+                        },
+                        "completion_percentage": {
+                          "type": "number",
+                          "example": 100
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 401
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Invalid or expired token"
+                },
+                "data": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "onboarding"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/v1/onboarding/upload-profile-image": {
+      "post": {
+        "summary": "/api/v1/onboarding/upload-profile-image",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Profile image uploaded successfully"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "verificationBadges": {
+                          "type": "object",
+                          "properties": {
+                            "background_check": {
+                              "type": "boolean",
+                              "example": false
+                            },
+                            "income_check": {
+                              "type": "boolean",
+                              "example": false
+                            },
+                            "social_credit": {
+                              "type": "boolean",
+                              "example": false
+                            },
+                            "identity_verification": {
+                              "type": "boolean",
+                              "example": false
+                            }
+                          }
+                        },
+                        "company_info": {
+                          "type": "object",
+                          "properties": {
+                            "business_address": {
+                              "type": "object",
+                              "properties": {
+                                "street": {
+                                  "type": "string",
+                                  "example": "123 Main St"
+                                },
+                                "city": {
+                                  "type": "string",
+                                  "example": "Boston"
+                                },
+                                "state": {
+                                  "type": "string",
+                                  "example": "MA"
+                                },
+                                "zip_code": {
+                                  "type": "string",
+                                  "example": "02139"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "example": "USA"
+                                }
+                              }
+                            },
+                            "business_type": {
+                              "type": "string",
+                              "example": "real_estate_agency"
+                            },
+                            "company_name": {
+                              "type": "string",
+                              "example": "Property Plus Agency"
+                            },
+                            "company_size": {
+                              "type": "string",
+                              "example": "11-50"
+                            },
+                            "tax_id": {
+                              "type": "string",
+                              "example": "34452676788"
+                            },
+                            "website": {
+                              "type": "string",
+                              "example": "https://propertyplus.com"
+                            }
+                          }
+                        },
+                        "_id": {
+                          "type": "string",
+                          "example": "68af40ffb63cb2c3014d519a"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Yasir Maqsood"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "yasirmaqsood534@gmail.com"
+                        },
+                        "user_type": {
+                          "type": "string",
+                          "example": "university_admin"
+                        },
+                        "isEmailVerified": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "profile_img": {
+                          "type": "string",
+                          "example": "https://moveinn-storage.s3.ca-central-1.amazonaws.com/profiles/68af40ffb63cb2c3014d519a/91b49429-8c94-4225-8916-2641112cdb89_image.png"
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "active"
+                        },
+                        "phone": {
+                          "type": "string",
+                          "example": "+923141601347"
+                        },
+                        "isSubscribed": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "isVerified": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "language_preference": {
+                          "type": "string",
+                          "example": "english"
+                        },
+                        "university_id": {
+                          "type": "string",
+                          "example": "68a6a2127bf9bb11ca9a64f3"
+                        },
+                        "is_active": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "example": "2025-08-27T17:31:43.479Z"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "example": "2025-08-27T18:41:29.226Z"
+                        },
+                        "date_of_birth": {
+                          "type": "string",
+                          "example": "2000-05-10T00:00:00.000Z"
+                        },
+                        "gender": {
+                          "type": "string",
+                          "example": "male"
+                        },
+                        "occupation": {
+                          "type": "string",
+                          "example": "Self-employed"
+                        }
+                      }
+                    },
+                    "image_url": {
+                      "type": "string",
+                      "example": "https://moveinn-storage.s3.ca-central-1.amazonaws.com/profiles/68af40ffb63cb2c3014d519a/91b49429-8c94-4225-8916-2641112cdb89_image.png"
+                    },
+                    "onboarding": {
+                      "type": "object",
+                      "properties": {
+                        "next_step": {
+                          "type": "string",
+                          "example": "completed"
+                        },
+                        "completion_percentage": {
+                          "type": "number",
+                          "example": 100
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "onboarding"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/v1/onboarding/university-verification": {
+      "post": {
+        "summary": "/api/v1/onboarding/university-verification",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "University verification successful"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "university": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "68a7852e2f9a4cd714461a7f"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "numl university"
+                        },
+                        "discount_percentage": {
+                          "type": "number",
+                          "example": 15
+                        }
+                      }
+                    },
+                    "student_verification": {
+                      "type": "object",
+                      "properties": {
+                        "is_verified": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "discount_eligible": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "discount_percentage": {
+                          "type": "number",
+                          "example": 15
+                        }
+                      }
+                    },
+                    "onboarding": {
+                      "type": "object",
+                      "properties": {
+                        "next_step": {
+                          "type": "string",
+                          "example": "completed"
+                        },
+                        "completion_percentage": {
+                          "type": "number",
+                          "example": 100
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 400
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "E11000 duplicate key error collection: moveinn.universitystudents index: user_id_1_university_id_1 dup key: { user_id: ObjectId('68af40ffb63cb2c3014d519a'), university_id: ObjectId('68a6a2127bf9bb11ca9a64f3') }"
+                },
+                "data": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "onboarding"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/v1/onboarding/upload-document": {
+      "post": {
+        "summary": "/api/v1/onboarding/upload-document",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Document uploaded successfully"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "document": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "68af52d6904e8fa70ed1c90e"
+                        },
+                        "document_type": {
+                          "type": "string",
+                          "example": "student_id"
+                        },
+                        "document_name": {
+                          "type": "string",
+                          "example": "image.png"
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "pending"
+                        },
+                        "file_url": {
+                          "type": "string",
+                          "example": "https://moveinn-storage.s3.ca-central-1.amazonaws.com/documents/68af40ffb63cb2c3014d519a/bbc7b949-c2b4-4f56-a875-915be7ac4e20_image.png"
+                        }
+                      }
+                    },
+                    "step_completed": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "onboarding": {
+                      "type": "object",
+                      "properties": {
+                        "next_step": {
+                          "type": "string",
+                          "example": "completed"
+                        },
+                        "completion_percentage": {
+                          "type": "number",
+                          "example": 100
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Document uploaded successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "onboarding"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/v1/onboarding/background-check": {
+      "post": {
+        "summary": "/api/v1/onboarding/background-check",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
     "/api/v1/onboarding/background-check/pricing": {
       "get": {
         "summary": "/api/v1/onboarding/background-check/pricing",
@@ -276,7 +973,9 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "304": {}
+        },
         "tags": [
           "onboarding"
         ]
@@ -289,9 +988,109 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Company verification setup successful"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "company_info": {
+                      "type": "object",
+                      "properties": {
+                        "business_address": {
+                          "type": "object",
+                          "properties": {
+                            "street": {
+                              "type": "string",
+                              "example": "123 Main St"
+                            },
+                            "city": {
+                              "type": "string",
+                              "example": "Boston"
+                            },
+                            "state": {
+                              "type": "string",
+                              "example": "MA"
+                            },
+                            "zip_code": {
+                              "type": "string",
+                              "example": "02139"
+                            },
+                            "country": {
+                              "type": "string",
+                              "example": "USA"
+                            }
+                          }
+                        },
+                        "business_type": {
+                          "type": "string",
+                          "example": "real_estate_agency"
+                        },
+                        "company_name": {
+                          "type": "string",
+                          "example": "Property Plus Agency"
+                        },
+                        "company_size": {
+                          "type": "string",
+                          "example": "11-50"
+                        },
+                        "tax_id": {
+                          "type": "string",
+                          "example": "356533567423"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "https://property.com"
+                        }
+                      }
+                    },
+                    "step_completed": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "onboarding": {
+                      "type": "object",
+                      "properties": {
+                        "next_step": {
+                          "type": "string",
+                          "example": "email_verification"
+                        },
+                        "completion_percentage": {
+                          "type": "number",
+                          "example": 67
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Company information saved successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "onboarding"
+        ],
+        "produces": [
+          "application/json"
         ]
       }
     },
@@ -302,9 +1101,75 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Business document uploaded successfully"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "document": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "68af5efa904e8fa70ed1ca11"
+                        },
+                        "document_type": {
+                          "type": "string",
+                          "example": "passport"
+                        },
+                        "document_name": {
+                          "type": "string",
+                          "example": "image.png"
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "pending"
+                        },
+                        "file_url": {
+                          "type": "string",
+                          "example": "https://moveinn-storage.s3.ca-central-1.amazonaws.com/business-documents/68af5e86904e8fa70ed1c9ec/0eb9d651-bfde-444e-8b37-2b95796b11f7_image.png"
+                        }
+                      }
+                    },
+                    "documents_uploaded": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "documents_required": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "step_completed": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "onboarding"
+        ],
+        "produces": [
+          "application/json"
         ]
       }
     },
@@ -341,9 +1206,121 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 200
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "University profile setup successful"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "university": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "68af5f69904e8fa70ed1ca49"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "masa university"
+                        },
+                        "domain": {
+                          "type": "string",
+                          "example": "masa.edu"
+                        },
+                        "subscription_status": {
+                          "type": "string",
+                          "example": "trial"
+                        },
+                        "monthly_fee": {
+                          "type": "number",
+                          "example": 99
+                        },
+                        "discount_percentage": {
+                          "type": "number",
+                          "example": 15
+                        }
+                      }
+                    },
+                    "trial_info": {
+                      "type": "object",
+                      "properties": {
+                        "trial_ends_at": {
+                          "type": "string",
+                          "example": "2025-09-26T19:41:29.336Z"
+                        },
+                        "trial_days_remaining": {
+                          "type": "number",
+                          "example": 30
+                        },
+                        "monthly_fee": {
+                          "type": "number",
+                          "example": 99
+                        }
+                      }
+                    },
+                    "onboarding": {
+                      "type": "object",
+                      "properties": {
+                        "next_step": {
+                          "type": "string",
+                          "example": "completed"
+                        },
+                        "completion_percentage": {
+                          "type": "number",
+                          "example": 100
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "number",
+                  "example": 400
+                },
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "University profile already exists for this admin"
+                },
+                "data": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "onboarding"
+        ],
+        "produces": [
+          "application/json"
         ]
       }
     },
@@ -393,7 +1370,9 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "304": {}
+        },
         "tags": [
           "payment"
         ]

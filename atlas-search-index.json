@@ -1,0 +1,23 @@
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "embedding": {
+        "type": "knnVector",
+        "dimensions": 1536,
+        "similarity": "cosine"
+      },
+      "metadata": {
+        "type": "document",
+        "fields": {
+          "category": { "type": "string" },
+          "userType": { "type": "array", "fields": { "": { "type": "string" } } },
+          "tags": { "type": "array", "fields": { "": { "type": "string" } } },
+          "priority": { "type": "number" }
+        }
+      },
+      "text": { "type": "string" },
+      "url": { "type": "string" }
+    }
+  }
+}

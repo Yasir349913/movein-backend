@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Lifecycle Flowchart</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .page-break { page-break-before: always; }
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        .user-type {
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .user-header {
+            padding: 15px 25px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .tenant { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .landlord { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .agency { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .university { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .bank { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .agent { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .admin { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        
+        .phases {
+            background: #f8f9fa;
+            padding: 0;
+        }
+        
+        .phase {
+            margin: 0;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+        }
+        
+        .phase:last-child {
+            border-bottom: none;
+        }
+        
+        .phase-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .phase-icon {
+            font-size: 18px;
+            margin-right: 10px;
+            width: 25px;
+            text-align: center;
+        }
+        
+        .flow-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .step {
+            background: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            border: 2px solid #e3f2fd;
+            color: #1976d2;
+            white-space: nowrap;
+        }
+        
+        .arrow {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .integration-section {
+            margin-top: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        
+        .integration-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .integration-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .integration-card h3 {
+            margin-top: 0;
+            color: #f8f9fa;
+            font-size: 18px;
+        }
+        
+        .integration-item {
+            margin: 8px 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background: #2980b9;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">📄 Print to PDF</button>
+    
+    <div class="container">
+        <h1>🔄 Complete User Lifecycle Flow Chart</h1>
+        
+        <!-- TENANT -->
+        <div class="user-type">
+            <div class="user-header tenant">👤 TENANT JOURNEY</div>
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📋</span>Getting Started</div>
+                    <div class="flow-steps">
+                        <div class="step">Sign Up</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Verify Email</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Create Profile</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Account Active</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">🏠</span>Finding Home</div>
+                    <div class="flow-steps">
+                        <div class="step">Browse Properties</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Search by Area</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Contact Landlords</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Send Inquiries</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">👥</span>Find Roommate (Optional)</div>
+                    <div class="flow-steps">
+                        <div class="step">Pay $5.99/week</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Fill Survey</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Browse Matches</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Chat & Meet</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📝</span>Apply for Property</div>
+                    <div class="flow-steps">
+                        <div class="step">Submit Application</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Background Check ($24.99)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Get Verified</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📋</span>Sign Contract</div>
+                    <div class="flow-steps">
+                        <div class="step">Property Approved</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Pay Fee ($7.99)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Sign Digital Contract</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Move In</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">💰</span>Monthly Rent</div>
+                    <div class="flow-steps">
+                        <div class="step">Rent Due</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Pay Online</div>
+                        <span class="arrow">→</span>
+                        <div class="step">7-Day Hold</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Payment to Landlord</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LANDLORD -->
+        <div class="user-type">
+            <div class="user-header landlord">🏠 LANDLORD JOURNEY</div>
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📋</span>Getting Started</div>
+                    <div class="flow-steps">
+                        <div class="step">Sign Up</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Verify Identity</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Setup Payments</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Account Active</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">🏢</span>Add Properties</div>
+                    <div class="flow-steps">
+                        <div class="step">Create Property</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Add Details</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Upload Photos</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Set Location</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📝</span>Create Listing</div>
+                    <div class="flow-steps">
+                        <div class="step">Choose Plan ($19.99 or $49.99)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Pay Fee</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Admin Review</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Go Live</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">🤝</span>Find Tenant</div>
+                    <div class="flow-steps">
+                        <div class="step">Review Applications</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Check Backgrounds</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Select Tenant</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Start Subscription ($9.99/month)</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">💰</span>Collect Rent</div>
+                    <div class="flow-steps">
+                        <div class="step">Sign Contract ($7.99)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Receive Rent</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Get Paid</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AGENCY -->
+        <div class="user-type">
+            <div class="user-header agency">🏢 AGENCY JOURNEY</div>
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📋</span>Getting Started</div>
+                    <div class="flow-steps">
+                        <div class="step">Company Registration</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Business Verification</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Payment Setup</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">💰</span>Subscribe</div>
+                    <div class="flow-steps">
+                        <div class="step">Choose Package ($299/month)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Pay Subscription</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Unlock All Features</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">👥</span>Setup Team</div>
+                    <div class="flow-steps">
+                        <div class="step">Create Sub-accounts (up to 5)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Assign Roles</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Train Agents</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">🏢</span>Manage Properties</div>
+                    <div class="flow-steps">
+                        <div class="step">Add Multiple Properties</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Unlimited Listings</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Assign to Agents</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">🎨</span>White-Label (Optional)</div>
+                    <div class="flow-steps">
+                        <div class="step">Pay Setup ($49.99)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Custom Domain</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Brand Customization</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIVERSITY -->
+        <div class="user-type">
+            <div class="user-header university">🎓 UNIVERSITY JOURNEY</div>
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📋</span>Partnership Setup</div>
+                    <div class="flow-steps">
+                        <div class="step">University Registration</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Domain Verification</div>
+                        <span class="arrow">→</span>
+                        <div class="step">30-Day Trial</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">🎨</span>Customize</div>
+                    <div class="flow-steps">
+                        <div class="step">Upload Logo</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Set Brand Colors</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Custom Domain</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">👥</span>Student Benefits</div>
+                    <div class="flow-steps">
+                        <div class="step">Student Email Setup</div>
+                        <span class="arrow">→</span>
+                        <div class="step">15% Discount</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Student Portal</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">💰</span>Subscription</div>
+                    <div class="flow-steps">
+                        <div class="step">Monitor Trial</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Pay Subscription ($99/month)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Full Partnership</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BANK PARTNER -->
+        <div class="user-type">
+            <div class="user-header bank">🏦 BANK PARTNER JOURNEY</div>
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📋</span>Partnership Setup</div>
+                    <div class="flow-steps">
+                        <div class="step">Company Registration</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Financial Verification</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Partnership Approval</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">💰</span>Advertisement Package</div>
+                    <div class="flow-steps">
+                        <div class="step">Choose Package ($499/month)</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Payment Processing</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Campaign Access</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">🎯</span>Create Campaigns</div>
+                    <div class="flow-steps">
+                        <div class="step">Upload Banners</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Target Audience</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Set Budget</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Launch Campaign</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-title"><span class="phase-icon">📊</span>Track Results</div>
+                    <div class="flow-steps">
+                        <div class="step">Monitor Clicks</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Track Conversions</div>
+                        <span class="arrow">→</span>
+                        <div class="step">Optimize Performance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTEGRATION SECTION -->
+        <div class="integration-section">
+            <div class="integration-title">🔗 How Everyone Connects</div>
+            <div class="integration-grid">
+                <div class="integration-card">
+                    <h3>💬 User Interactions</h3>
+                    <div class="integration-item">• Tenants connect with Landlords</div>
+                    <div class="integration-item">• Agencies manage multiple properties</div>
+                    <div class="integration-item">• Universities help students</div>
+                    <div class="integration-item">• Banks advertise to all users</div>
+                    <div class="integration-item">• Admins support everyone</div>
+                </div>
+                
+                <div class="integration-card">
+                    <h3>💰 Money Flow</h3>
+                    <div class="integration-item">• Rent: Tenant → Platform → Landlord</div>
+                    <div class="integration-item">• Subscriptions: Users → Platform</div>
+                    <div class="integration-item">• Commissions: Shared with Agencies</div>
+                    <div class="integration-item">• Partnerships: Universities & Banks pay Platform</div>
+                </div>
+                
+                <div class="integration-card">
+                    <h3">📊 Data Sharing</h3>
+                    <div class="integration-item">• All activities create analytics</div>
+                    <div class="integration-item">• Background checks build trust</div>
+                    <div class="integration-item">• Location data improves search</div>
+                    <div class="integration-item">• Messages flow through platform</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

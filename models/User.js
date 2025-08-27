@@ -155,7 +155,6 @@ userSchema.methods.generateEmailVerificationToken = function () {
 userSchema.methods.isAdmin = function () {
   return ['admin', 'super_admin'].includes(this.user_type);
 };
-
 userSchema.methods.isSuperAdmin = function () {
   return this.user_type === 'super_admin';
 };
